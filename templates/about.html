@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block index %}
+<br><br><br><br><br><br><br><br><br><br><br>
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <title>SEO Dream - Creative SEO HTML5 Template by TemplateMo</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+
+
+</head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <!-- <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div> -->
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+
+  <section class="about_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="about_detail-box">
+            <h3 class="text-uppercase">
+              Biz Xaqimizda
+            </h3>
+            <p>
+              Mening ismim Firdavs. Hozirda oddiy o'quvchiman. Men xozir it sohasini bitirganman . Shuningdek men biladigan tillar : PYTHON ,JavaScript , HTML,CSS, DJANGO .
+Hobbiym Sunniy Intelekt yaratish .
+
+
+            </p>
+      
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="about_img-box">
+          <img src="{% static 'images/df.png' %}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock index %}
+    

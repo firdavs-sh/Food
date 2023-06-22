@@ -1,0 +1,34 @@
+<!-- Sidebar Widgets Column -->
+<div class="col-md-4">
+    <!-- Search Widget -->
+    <div class="card my-4">
+        <h5 class="card-header">Search games</h5>
+        <div class="card-body">
+            <form action="{% url 'music1' %}" method="get">
+                <div class="input-group">
+                    <input type="search" name='qq' class="form-control" placeholder="Search for..." value="{{ request.GET.qq }}" required>
+                    <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="submit">Go!</button>
+                    </span>
+                </div>
+          
+    </div>
+
+
+
+    <!-- Side Widget -->
+    {% for i in  data %}
+    <div class="card my-4">
+        <h5 class="card-header">Recent Posts</h5>
+        <div class="card-body">
+        
+                
+                {{i.malumot}}
+                <img src="{{ i.field.url  }}" alt="ad">
+          
+         
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>

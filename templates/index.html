@@ -1,0 +1,245 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block index %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <title>Index</title>
+<style>
+  img{
+    width: 100px;
+    
+  }
+  td{
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .but{
+    background-color: aqua;
+    border-radius: 20px;
+  }
+  .but:hover{
+    background-color: aqua;
+    border-radius: 20px;
+    color: azure;
+  }
+</style>
+
+
+</head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+
+  <!-- ***** Header Area End ***** -->
+  {% if request.user.is_authenticated %}
+
+<body id="c1">
+  <div class="top_container">
+   
+    <br><br><br>
+<hr>
+
+   <center>
+    <section class="hero_section position-relative">
+      <div class="number-container d-none d-md-block">
+        <div class="number-box">
+
+        </div>
+      </div>
+      <div class="hero_section-container ">
+
+        <div class="hero_detail-box">
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="hero_detail-container">
+                  <h1>
+                    Mening ismim Firdavs  . <br>
+                    Men 16 yoshdaman ....
+                  </h1><br><br>
+                  <a href="{% url 'about' %}"><button class="but">To'liq ma'lumot</button></a>
+          <br><br><br><br>
+
+                 
+                </div>
+                
+              </div>
+
+            </div>
+          </div>
+
+
+
+        </div>
+       
+      </div>
+      
+    </section>  
+   </center>
+  </div>
+  <!-- end header section -->
+
+
+  <!-- about section -->
+
+  <!-- end about section -->
+
+<!-- practice section -->
+<section class="practice_section layout_padding">
+  <div class="container">
+    <div class="d-flex flex-column align-items-center">
+<p class="heading-text">
+    Men biladigan
+</p>
+<h3 class="text-uppercase">
+    Tillar
+</h3>
+    </div>
+    <div class="practice_container">
+
+<center>
+  <table>
+  <tr>
+
+  <td>
+    <div class="practice_box">
+      <div class="practice_img-box">
+<img src="{% static 'images/d.png' %}" alt="">
+      </div>
+      <h4>
+         Django
+
+
+      </h4>
+    </div>
+   </td>
+
+   <td>
+    <div class="practice_box">
+      <div class="practice_img-box">
+<img src="{% static 'images/j.png' %}" alt="">
+      </div>
+      <h4>
+         JavaScript
+
+
+      </h4>
+    </div>
+   </td>
+
+       <td>
+        <div class="practice_box">
+          <div class="practice_img-box">
+  <img src="{% static 'images/h.png' %}" alt="">
+          </div>
+          <h4>
+          HTML | CSS
+
+  
+          </h4>
+        </div>
+       </td>
+
+        
+   <td>
+    <div class="practice_box">
+      <div class="practice_img-box">
+<img src="{% static 'images/p.png' %}" alt="">
+      </div>
+      <h4>
+         Python
+
+      </h4>
+    </div>
+   </td>
+
+      <td>
+        <div class="practice_box">
+          <div class="practice_img-box">
+  <img src="{% static 'images/3.png' %}" alt="">
+          </div>
+          <h4>
+           Sqlite3
+
+  
+          </h4>
+        </div>
+      </td>
+     
+    </div> 
+
+ 
+  </tr>
+</table>
+</center>
+  </div>
+</section>
+<hr>
+
+<!-- end practice section -->
+
+<!-- welcome section -->
+
+
+
+<!-- end welcome section -->
+
+<!-- contact section -->
+ <!-- contact section -->
+
+
+</body>
+
+</html>
+  {% else %}
+  <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-6 align-self-center">
+              <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                <div class="row">
+                  <div class="col-lg-4 col-sm-4">
+               
+                  </div>
+                
+                  <div class="col-lg-12">
+                    <h2>Salom &amp; Qo'shimcha Ma'lumot bilish uchun ro'yhatdan o'ting</h2>
+                  </div>
+                  <div class="col-lg-12">
+             
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                <img src="{% static 'assets/images/banner-right-image.png' %}" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+
+</body>
+</html>
+{% endblock index %}
+  

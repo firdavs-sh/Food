@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %}{{ block.super }}| {{ object.title }}{% endblock title %}
+{% block content %}
+<br><br>
+<div class="row"  style="background-color: rgb(196, 255, 246) ;">
+    <div class="col-lg-8">
+        <!-- Title -->
+        <h1 class="mt-4">{{ object.title }}</h1>
+        <!-- Author -->
+        <p class="lead">
+          
+            {% if object.user.get_full_name %}
+            <a href="/?author={{ object.user }}">{{ object.user.get_full_name }}</a>
+            {% else %}
+            <a href="/?author={{ object.user }}">{{ object.user.username }}</a>
+            {% endif %}
+            tomonidan
+        </p>
+
+        <hr>
+        <!-- Date/Time -->
+        <p>Posted on, {{ object.created_at|naturaltime }}</p>
+        <hr>
+
+        <!-- Preview Image -->
+        <img style="width: 400px;" src="{{ object.image.url }}" alt="{{ object.title }}">
+        <hr>
+
+        <!-- Post Content -->
+        <p style="color: white;" class="lead">{{ object.details }}</p>
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td>Nomi</td>
+                    <td>{{ object.title }}</td>
+                </tr>
+                <tr>
+                    <td>Turkum:</td>
+                    <td>
+                        {% for cat in object.get_categories %}
+                        <a href="/?cat={{ cat }}">{{ cat }}</a>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Manzil</td>
+                    <td>{{ object.location }}</td>
+                </tr>
+                <!-- <tr>
+                    <td>Price</td>
+                    <td>{{ object.price }} Taka, Vat {{ object.vat }}%</td>
+                </tr>
+                <tr>
+                    <td>Persons</td>
+                    <td>{{ object.persons }}</td>
+                </tr>
+                <tr>
+                    <td>Taste</td>
+                    <td>{{ object.taste }} out of 10</td>
+                </tr> -->
+                <tr>
+                    <td>Narxi</td>
+                    <td>{{ object.narxi }} so'm</td>
+                </tr>
+                <tr>
+                    <td>Murojat uchun tel:</td>
+                    <td>{{ object.aloqa }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 style="color: rgb(17, 245, 43) ;"> <b>Toshkent bo'ylab yetkazib berish bepul 🚚</b></h3>
+        <hr>
+
+        <!-- Comments Form -->
+        <div class="card my-4">
+            <h5 class="card-header">Izox qoldiring</h5>
+            <div class="card-body">
+                <form action="." method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="hidden" name='slug' value="{{ object.slug }}">
+                        <textarea name="comment" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Tekshirish</button>
+                </form>
+            </div>
+        </div>
+
+
+
+       
+        <!-- Single Comment -->
+
+        {% if object.comments.all %}
+        {% for comment in object.comments.all %}
+        <div class="media mb-4">
+            <img class="d-flex mr-3 rounded-circle comment_pic" src="{{ comment.user.profile.image.url }}" alt="Image">
+            <div class="media-body">
+                <h5 class="mt-0">{{ comment.user.get_full_name }}</h5>
+                <p>{{ comment.text }}<br>
+                    <small><i class="far fa-clock"></i>&nbsp{{ comment.created_at }}</small>
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    {% include 'partials/_styles.html' %}
+    {% block widgets %}{% include 'partials/_widgets.html' %}{% endblock widgets %}
+    {% endblock content %}

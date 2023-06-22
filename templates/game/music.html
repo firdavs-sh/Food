@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load static %}
+{% block games %}
+<br><br><br>
+<body style="background-color: rgb(196, 255, 246);">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+<header style="background-color:rgb(196, 255, 246) ;">
+
+
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand d-md-none d-md-flex" href="{% url 'gbase' %}">Online games</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+ 
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'music  11' %}">Music</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Books</a>
+          </li>
+     
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Mobiles
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="#">Smart Phones</a></li>
+              <li><a class="dropdown-item" href="#">Feature Phones</a></li>
+              <li><a class="dropdown-item" href="#">Mobile Covers</a></li>
+            </ul>
+            
+          </li> -->
+        </ul>
+        <div class="container-fluid">
+      <!-- Search Widget -->
+      <div class="card my-4">
+        <h5 class="card-header">Search</h5>
+        <div class="card-body">
+            <form action="{% url 'music1' %}" method="get">
+                <div class="input-group">
+                    <input type="search" name='qq' class="form-control" placeholder="Search for..." value="{{ request.GET.qq }}" required>
+                    <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="submit">Go!</button>
+                    </span>
+                </div>
+          
+    </div>
+      </div>
+    </div>
+  </nav>
+  </header>
+<br><br>
+<!-- Blog Entries Column -->
+<style>
+  .hello{
+    width: 80px;
+    border-radius: 30%;
+    height: 70px;
+    
+  }
+  .hello:hover{
+    width: 85px;
+    height: 75px;
+  }
+</style>
+<div>
+  <center><h1>Games</h1></center>
+
+ 
+  </div>
+<div style="background-color:  #fff ;">
+  
+
+  {% if object_list %}
+  {% for obj in object_list %}
+<td>
+  <tr style="width: 200px;">
+
+      <a style="font-size: 10px;color: black;" href="{% url 'game' obj.slug %}">
+        <img class="hello" src="{{ obj.image.url }}" alt="Card image cap" >
+        {{ obj.title }}
+      </a>
+
+  </tr>
+</td>
+  {% endfor %}
+  {% else %}
+
+  <P class="btn btn-warning ml-3">Bunday mahsulot topilmadi</P>
+  {% endif %}
+
+  {% include 'partials/_styles.html' %}
+</div>
+
+</div>
+    <!-- Pagination -->
+    {% if is_paginated %}
+    <ul class="pagination justify-content-center mb-4">
+      {% if page_obj.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&larr;Oqraga</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <a class="page-link" href="">&larr; Oqraga</a>
+      </li>
+      {% endif %}
+
+      {% if page_obj.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Keyingisi &rarr;</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <a class="page-link" href="#">Keyingisi &rarr;</a>
+      </li>
+      {% endif %}
+    </ul>
+    {% endif %}
+  </div>
+
+</div>
+  {% endblock games %}  
+</body>
+  
